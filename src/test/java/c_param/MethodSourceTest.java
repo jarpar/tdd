@@ -2,6 +2,7 @@ package c_param;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
@@ -15,5 +16,19 @@ public class MethodSourceTest {
 
     static Stream<Integer> data() {
         return Stream.of(2, 4, 6, 8, 10);
+    }
+
+    @ParameterizedTest
+    @MethodSource("data2")
+    public void test2(Integer i, boolean isEven) {
+        Assertions.assertEquals(isEven, i % 2 == 0);
+    }
+
+    static public Stream<Arguments> data2() {
+        return Stream.of(
+                Arguments.of(1, false),
+                Arguments.of(2, true),
+                Arguments.of(3, false)
+        );
     }
 }
