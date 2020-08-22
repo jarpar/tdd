@@ -24,20 +24,31 @@ public class CalculatorClass {
     @AfterEach
     public void afterEach() {
         System.out.println("AFTER EACH");
+        System.out.println();
     }
 
     @Test
-    public void test() {
-        //Calculator calculator = new Calculator();
+    public void sum_2Plus2_shouldBeEqualTo4() {
         Integer sum = calculator.add(2, 2);
-        Integer substract = calculator.substract(8, 4);
-        Integer multiply = calculator.multiply(2, 2);
-        Integer divide = calculator.divide(8, 2);
-
         Assertions.assertEquals(4, sum);
-        Assertions.assertEquals(4, substract);
-        Assertions.assertEquals(4, multiply);
-        Assertions.assertEquals(4, divide);
 
+    }
+
+    @Test
+    public void substract_4From8_shouldBeEqualTo4() {
+        Integer substract = calculator.substract(8, 4);
+        Assertions.assertEquals(4, substract);
+    }
+
+    @Test
+    public void multiply_2And2_shoulEqualTo4() {
+        Integer multiply = calculator.multiply(2, 2);
+        Assertions.assertEquals(4, multiply);
+    }
+
+    @Test
+    public void divide_8By2_shouldBe4() {
+        Integer divide = calculator.divide(8, 2);
+        Assertions.assertEquals(4, divide);
     }
 }
