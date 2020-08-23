@@ -32,7 +32,7 @@ public class ZooTest {
         Zoo zoo = new Zoo();
         Animal cat = new Animal("Stefan");
         assertThat(zoo.generateFunnyName(cat))
-                .isNotEqualTo(cat.getName());
+                .isEqualToIgnoringCase(cat.getName());
     }
 
     @Test
@@ -42,6 +42,5 @@ public class ZooTest {
         String nameWithPrefix = zoo.generateNameWithPrefix(animal);
         assertThat(nameWithPrefix)
                 .startsWith("Zwierzątko");
-
     }
 }
