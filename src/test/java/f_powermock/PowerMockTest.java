@@ -1,5 +1,6 @@
 package f_powermock;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -12,9 +13,12 @@ import org.powermock.modules.junit4.PowerMockRunner;
 public class PowerMockTest {
     @Test
     public void test() throws Exception {
-        UserValidator userValidator = Mockito.mock(UserValidator.class);
+        UserValidator mockedUserValidator = Mockito.mock(UserValidator.class);
         PowerMockito.whenNew(UserValidator.class)
                 .withNoArguments()
-                .thenReturn(userValidator);
+                .thenReturn(mockedUserValidator);
+
+        UserValidator userValidator = new UserValidator();
+        Assertions.assertThat(userValidator).isEqualTo(mockedUserValidator);
     }
 }
