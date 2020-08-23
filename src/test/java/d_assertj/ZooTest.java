@@ -28,11 +28,20 @@ public class ZooTest {
     }
 
     @Test
-    public void zooTest() {
+    public void funnyNameTest() {
         Zoo zoo = new Zoo();
         Animal cat = new Animal("Stefan");
         assertThat(zoo.generateFunnyName(cat))
                 .isNotEqualTo(cat.getName());
     }
 
+    @Test
+    public void generateNameWithPrefix() {
+        Zoo zoo = new Zoo();
+        Animal animal = new Animal("Stefan");
+        String nameWithPrefix = zoo.generateNameWithPrefix(animal);
+        assertThat(nameWithPrefix)
+                .startsWith("Zwierzątko");
+
+    }
 }
