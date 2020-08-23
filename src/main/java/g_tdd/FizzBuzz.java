@@ -2,6 +2,9 @@ package g_tdd;
 
 public class FizzBuzz {
     public String fizzBuzz(int i) {
-        return "Fizz";
+        if (i == 3) {
+            return "Fizz";
+        }
+        return "Buzz";
     }
 }

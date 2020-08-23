@@ -12,4 +12,13 @@ public class FizzBuzzTest {
         String value = fizzBuzz.fizzBuzz(3);
         Assertions.assertThat(value).isEqualTo("Fizz");
     }
+
+    @Test
+    public void fizzBuzz_whenPasing5_shouldReturnBuzz() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        String value = fizzBuzz.fizzBuzz(5);
+        Assertions.assertThat(value).isEqualTo("Buzz");
+    }
+
+
 }
