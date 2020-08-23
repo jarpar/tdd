@@ -13,6 +13,14 @@ public class MockitoTest {
 
         mockedList.add("one");
 
-        Mockito.verify(mockedList);
+        Mockito.verify(mockedList).add("one");
+    }
+
+    @Test
+    public void test2() {
+        List mockedList = Mockito.mock(List.class);
+        Mockito.when(mockedList.size()).thenReturn(100);
+        System.out.println(mockedList.size());
+        System.out.println(mockedList.size());
     }
 }
