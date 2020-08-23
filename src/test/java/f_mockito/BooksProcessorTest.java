@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 
 public class BooksProcessorTest {
 
@@ -56,5 +57,6 @@ public class BooksProcessorTest {
         BooksProcessor booksProcessor = new BooksProcessor(mockedDatabase);
         booksProcessor.getTotalPrice();
         verify(mockedDatabase).getBooks();
+        //verifyNoInteractions(mockedDatabase);
     }
 }
