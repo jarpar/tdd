@@ -23,7 +23,8 @@ public class ZooTest {
         zoo.addAnimal(animal);
         List<Animal> allAnimals = zoo.getAllAnimals();
         assertThat(allAnimals)
-                .hasSize(1);
+                //.hasSize(1)
+                .containsExactly(animal);
     }
 
     @Test
