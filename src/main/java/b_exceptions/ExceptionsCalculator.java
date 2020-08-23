@@ -2,7 +2,7 @@ package b_exceptions;
 
 public class ExceptionsCalculator {
 
-    Integer divide(Integer a, Integer b) {
+    public Integer divide(Integer a, Integer b) {
         if (a == null || b == null) {
             throw new IllegalArgumentException("NULL ARGUMENT");
         }
