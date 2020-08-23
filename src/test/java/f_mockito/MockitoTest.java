@@ -19,7 +19,15 @@ public class MockitoTest {
     @Test
     public void test2() {
         List mockedList = Mockito.mock(List.class);
-        Mockito.when(mockedList.size()).thenReturn(100);
+        Mockito.when(mockedList.size())
+                .thenReturn(100)
+                .thenReturn(500)
+                .thenReturn(1000);
+        System.out.println(mockedList.size());
+        System.out.println(mockedList.size());
+        System.out.println(mockedList.size());
+        System.out.println(mockedList.size());
+        System.out.println(mockedList.size());
         System.out.println(mockedList.size());
         System.out.println(mockedList.size());
     }
