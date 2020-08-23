@@ -30,4 +30,12 @@ public class PowerMockTest {
 
         Assertions.assertThat(valid).isFalse();
     }
+
+    @Test
+    public void test3() {
+        PowerMockito.mockStatic(UserValidator.class);
+        PowerMockito.when(UserValidator.validateStatic()).thenReturn(false);
+        boolean valid = UserValidator.validateStatic();
+        Assertions.assertThat(valid).isFalse();
+    }
 }

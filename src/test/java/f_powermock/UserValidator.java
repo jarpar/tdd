@@ -7,4 +7,8 @@ public class UserValidator {
     final boolean validateFinal() {
         return true;
     }
+
+    static boolean validateStatic() {
+        return true;
+    }
 }
