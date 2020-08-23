@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 
 public class BooksProcessorTest {
 
@@ -47,5 +48,13 @@ public class BooksProcessorTest {
         double totalPrice = booksProcessor.getTotalPrice();
         assertThat(totalPrice).
                 isEqualTo(300);
+    }
+
+    @Test
+    public void getTotalPrice_WhenGettingTotalPrice_shouldCall_getBooksMethod() {
+        Database mockedDatabase = Mockito.mock(Database.class);
+        BooksProcessor booksProcessor = new BooksProcessor(mockedDatabase);
+        booksProcessor.getTotalPrice();
+        verify(mockedDatabase).getBooks();
     }
 }
