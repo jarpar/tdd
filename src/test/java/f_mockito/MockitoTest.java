@@ -11,5 +11,8 @@ public class MockitoTest {
     public void test() {
         List mockedList = Mockito.mock(List.class);
 
+        mockedList.add("one");
+
+        Mockito.verify(mockedList);
     }
 }
