@@ -60,7 +60,7 @@ public class BooksProcessorTest {
     }
 
     @Test
-    public void getTotalPrice_whenExceptionThrownInFirstAttempt_shouldCallMetodSecondTime() {
+    public void getTotalPrice_whenExceptionThrownInFirstAttempt_shouldCallMethodSecondTime() {
         Database mockedDatabase = Mockito.mock(Database.class);
         List<Book> list = new ArrayList<>();
         Mockito.when(mockedDatabase.getBooks())
@@ -68,6 +68,20 @@ public class BooksProcessorTest {
                 .thenReturn(list);
         BooksProcessor booksProcessor = new BooksProcessor(mockedDatabase);
         booksProcessor.getTotalPrice();
-        verify(mockedDatabase,times(2)).getBooks();
+        verify(mockedDatabase, times(2)).getBooks();
     }
+
+    @Test
+    public void getTotalPrice_whenExceptionThrownInThirdAttempt_shouldCallMethodSecondTime() {
+        Database mockedDatabase = Mockito.mock(Database.class);
+        List<Book> list = new ArrayList<>();
+        Mockito.when(mockedDatabase.getBooks())
+                .thenThrow(new RuntimeException())
+                .thenThrow(new RuntimeException())
+                .thenReturn(list);
+        BooksProcessor booksProcessor = new BooksProcessor(mockedDatabase);
+        booksProcessor.getTotalPrice();
+        verify(mockedDatabase, times(3)).getBooks();
+    }
+
 }
