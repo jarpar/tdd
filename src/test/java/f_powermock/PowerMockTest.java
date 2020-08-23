@@ -21,4 +21,13 @@ public class PowerMockTest {
         UserValidator userValidator = new UserValidator();
         Assertions.assertThat(userValidator).isEqualTo(mockedUserValidator);
     }
+
+    @Test
+    public void test2() {
+        UserValidator mockedUserValidator = PowerMockito.mock(UserValidator.class);
+        PowerMockito.when(mockedUserValidator.validateFinal()).thenReturn(false);
+        boolean valid = mockedUserValidator.validateFinal();
+
+        Assertions.assertThat(valid).isFalse();
+    }
 }
