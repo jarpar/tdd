@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.*;
 
 public class BooksProcessorTest {
 
@@ -58,5 +57,17 @@ public class BooksProcessorTest {
         booksProcessor.getTotalPrice();
         verify(mockedDatabase).getBooks();
         //verifyNoInteractions(mockedDatabase);
+    }
+
+    @Test
+    public void getTotalPrice_whenExceptionThrownInFirstAttempt_shouldCallMetodSecondTime() {
+        Database mockedDatabase = Mockito.mock(Database.class);
+        List<Book> list = new ArrayList<>();
+        Mockito.when(mockedDatabase.getBooks())
+                .thenThrow(new RuntimeException())
+                .thenReturn(list);
+        BooksProcessor booksProcessor = new BooksProcessor(mockedDatabase);
+        booksProcessor.getTotalPrice();
+        verify(mockedDatabase,times(2)).getBooks();
     }
 }
