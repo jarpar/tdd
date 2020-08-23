@@ -20,5 +20,10 @@ public class FizzBuzzTest {
         Assertions.assertThat(value).isEqualTo("Buzz");
     }
 
-
+    @Test
+    public void fizzBuzz_whenPasing6_shouldReturnFizzBuzz() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        String value = fizzBuzz.fizzBuzz(6);
+        Assertions.assertThat(value).isEqualTo("FizzBuzz");
+    }
 }
